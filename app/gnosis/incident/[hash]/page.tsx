@@ -7,7 +7,18 @@ async function getIncidentData(hash: string) {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   // Mock data
-  const incidents = {
+  interface Incident {
+    date: string;
+    inactiveValidators: number;
+    resolved: boolean;
+    startTime: string;
+    validators: Array<{
+      id: string;
+      link: string;
+    }>;
+  }
+
+  const incidents: Record<string, Incident> = {
     abc123: {
       date: "2023-06-15T10:30:00Z",
       inactiveValidators: 5,
