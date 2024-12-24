@@ -3,27 +3,27 @@ import { Send } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-8">
+    <footer className="bg-background text-foreground py-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-cyan-400">
+            <h3 className="text-lg font-semibold mb-4 text-primary">
               Node Sentinel
             </h3>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-muted-foreground">
               Empowering blockchain validators with advanced monitoring
               solutions.
             </p>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-cyan-400">
+            <h3 className="text-lg font-semibold mb-4 text-primary">
               Quick Links
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#"
-                  className="text-sm text-gray-400 hover:text-cyan-400 transition duration-300"
+                  className="text-sm text-muted-foreground hover:text-primary transition duration-300"
                 >
                   Home
                 </Link>
@@ -55,7 +55,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-cyan-400">
+            <h3 className="text-lg font-semibold mb-4 text-primary">
               Connect With Us
             </h3>
             <div className="flex space-x-4">
@@ -85,13 +85,13 @@ export default function Footer() {
                 className="text-gray-400 hover:text-cyan-400 transition duration-300"
               >
                 <span className="sr-only">Telegram</span>
-                <Send className="w-6 h-6" />
+                <Send className="w-4 h-4" />
               </Link>
             </div>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-          <p className="text-sm text-gray-400">
+        <div className="mt-8 pt-8 border-t border-border text-center">
+          <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Node Sentinel. All rights
             reserved.
           </p>

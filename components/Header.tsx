@@ -1,16 +1,17 @@
+import Logo from "@/components/icons/Logo";
 import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="bg-black bg-opacity-80 backdrop-blur-md fixed w-full z-10">
+    <header className="bg-background/80 backdrop-blur-md fixed w-full z-10">
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-cyan-400">
-          Node Sentinel
+        <Link href="/" className="text-2xl text-primary">
+          <Logo />
         </Link>
         <div className="space-x-6">
           <Link
             href="/"
-            className="text-gray-300 hover:text-cyan-400 transition duration-300"
+            className="text-muted-foreground hover:text-primary transition duration-300"
           >
             Home
           </Link>
