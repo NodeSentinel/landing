@@ -24,7 +24,7 @@ const nicoMoji = localFont({
 export const metadata: Metadata = {
   title: "Node Sentinel",
   description:
-    "Empowering blockchain validators with advanced monitoring solutions.",
+    "Equipping blockchain validators with advanced monitoring solutions.",
 };
 
 export default function RootLayout({

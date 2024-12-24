@@ -11,7 +11,7 @@ export default function Footer() {
               Node Sentinel
             </h3>
             <p className="text-sm text-muted-foreground">
-              Empowering blockchain validators with advanced monitoring
+              Equipping blockchain validators with advanced monitoring
               solutions.
             </p>
           </div>
