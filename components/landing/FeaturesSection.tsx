@@ -8,7 +8,7 @@ export default function FeaturesSection() {
           Features
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-card rounded-lg overflow-hidden border border-border hover:border-primary transition duration-300 flex flex-col">
+          <div className="flex flex-col bg-card rounded-lg overflow-hidden border border-border">
             <div className="flex-1 relative min-h-[300px] md:min-h-[350px]">
               <Image
                 src="/images/features/realTimeStats.png"
@@ -27,7 +27,7 @@ export default function FeaturesSection() {
             </div>
           </div>
 
-          <div className="bg-card rounded-lg overflow-hidden border border-border hover:border-primary transition duration-300 flex flex-col">
+          <div className="flex flex-col bg-card rounded-lg overflow-hidden border border-border">
             <div className="flex-1 relative min-h-[300px] md:min-h-[350px]">
               <Image
                 src="/images/features/notifications.png"
@@ -46,7 +46,7 @@ export default function FeaturesSection() {
             </div>
           </div>
 
-          <div className="bg-card rounded-lg overflow-hidden border border-border hover:border-primary transition duration-300 flex flex-col">
+          <div className="flex flex-col bg-card rounded-lg overflow-hidden border border-border">
             <div className="flex-1 relative min-h-[300px] md:min-h-[350px]">
               <Image
                 src="/images/features/dashboard.png"
