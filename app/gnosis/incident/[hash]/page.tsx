@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import IncidentDetails from "@/components/landing/IncidentDetails";
+import IncidentDetails from "@/components/IncidentDetails";
 
 // This is a mock function. In a real app, you'd fetch this data from an API or database.
 async function getIncidentData(hash: string) {
