@@ -81,7 +81,9 @@ export default function Footer() {
                 <Linkedin className="w-6 h-6" />
               </Link> */}
               <Link
-                href="#"
+                href="https://t.me/+It8jmqe4k6s4ODAx"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-cyan-400 transition duration-300"
               >
                 <span className="sr-only">Telegram</span>

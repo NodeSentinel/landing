@@ -1,10 +1,8 @@
-import HeroSection from "@/components/HeroSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import StatsSection from "@/components/StatsSection";
-import SupportUsSection from "@/components/SupportUsSection";
-//import BlockchainSection from "@/components/BlockchainSection";
-// import PricingSection from "@/components/PricingSection";
-import SupportedBySection from "@/components/SupportedBySection";
+import HeroSection from "@/components/landing/HeroSection";
+import FeaturesSection from "@/components/landing/FeaturesSection";
+import StatsSection from "@/components/landing/StatsSection";
+import SupportUsSection from "@/components/landing/SupportUsSection";
+import SupportedBySection from "@/components/landing/SupportedBySection";
 
 export default function Home() {
   return (
