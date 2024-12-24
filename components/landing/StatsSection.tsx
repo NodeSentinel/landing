@@ -1,7 +1,7 @@
 export default function StatsSection() {
   const stats = [
     { value: "USD 16M", label: "Value monitored" },
-    { value: "60k", label: "validators" },
+    { value: "60k", label: "Validators monitored" },
     { value: "100+", label: "Users" },
   ];
 
