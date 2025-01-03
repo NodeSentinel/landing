@@ -24,7 +24,7 @@ const calculateExponentialDiscount = (validators: number): DiscountResult => {
     };
   }
   // Adjusting exponential growth to enhance discounts at higher validator counts
-  const discountFactor = 1 - Math.exp(-0.0016 * validators); // Increased growth rate
+  const discountFactor = 1 - Math.exp(-0.0025 * validators); // Increased growth rate
   const discount = Math.min(discountFactor * MAX_DISCOUNT, MAX_DISCOUNT);
   const pricePerValidator = BASE_PRICE * (1 - discount);
   const totalPrice = pricePerValidator * validators;
