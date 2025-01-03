@@ -2,7 +2,8 @@ import HeroSection from "@/components/landing/HeroSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import StatsSection from "@/components/landing/StatsSection";
 import SupportUsSection from "@/components/landing/SupportUsSection";
-import SupportedBySection from "@/components/landing/SupportedBySection";
+/* import SupportedBySection from "@/components/landing/SupportedBySection"; */
+import PriceSimulator from "@/components/landing/PriceSimulator";
 
 export default function Home() {
   return (
@@ -10,10 +11,11 @@ export default function Home() {
       <HeroSection />
       <FeaturesSection />
       <StatsSection />
-      <SupportUsSection />
       {/* <BlockchainSection /> */}
       {/* <PricingSection /> */}
-      <SupportedBySection />
+      <PriceSimulator />
+      <SupportUsSection />
+      {/* <SupportedBySection /> */}
     </>
   );
 }
