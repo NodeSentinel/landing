@@ -7,6 +7,8 @@ import { EthereumIcon } from "@/components/icons/Ethereum";
 import { GnosisIcon } from "@/components/icons/Gnosis";
 import { QRCodeCanvas } from "qrcode.react";
 
+const address = "0xDA74B77BA4BE36619b248088214D807A581292C4";
+
 export default function SupportUsSection() {
   return (
     <section className="py-20 text-primary bg-gradient-to-r from-primary/10 to-primary/20">
@@ -20,12 +22,10 @@ export default function SupportUsSection() {
           <ArbitrumIcon width={24} height={24} />
           <BaseIcon width={24} height={24} />
         </div>
-        <span className="text-md break-all">
-          0xDA74B77BA4BE36619b248088214D807A581292C4
-        </span>
+        <span className="text-md break-all">{address}</span>
         <div className="flex justify-center mt-4">
           <QRCodeCanvas
-            value="0xDA74B77BA4BE36619b248088214D807A581292C4"
+            value={address}
             size={100}
             bgColor="transparent"
             fgColor="rgb(27 39 59)"
