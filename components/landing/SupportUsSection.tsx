@@ -1,8 +1,11 @@
+"use client";
+
 import { BaseIcon } from "@/components/icons/Base";
 import { ArbitrumIcon } from "@/components/icons/Arbitrum";
 import { OptimismIcon } from "@/components/icons/Optimism";
 import { EthereumIcon } from "@/components/icons/Ethereum";
 import { GnosisIcon } from "@/components/icons/Gnosis";
+import { QRCodeCanvas } from "qrcode.react";
 
 export default function SupportUsSection() {
   return (
@@ -20,6 +23,14 @@ export default function SupportUsSection() {
         <span className="text-md break-all">
           0xDA74B77BA4BE36619b248088214D807A581292C4
         </span>
+        <div className="flex justify-center mt-4">
+          <QRCodeCanvas
+            value="0xDA74B77BA4BE36619b248088214D807A581292C4"
+            size={100}
+            bgColor="transparent"
+            fgColor="rgb(27 39 59)"
+          />
+        </div>
       </div>
     </section>
   );
