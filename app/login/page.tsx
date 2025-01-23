@@ -22,7 +22,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md">
         <CardContent className="flex flex-col items-center justify-center space-y-4">
           <LoginButton
-            botUsername="@gbc_validators_bot"
+            botUsername="gbc_validators_bot"
             onAuthCallback={handleAuth}
             buttonSize="large"
           />
