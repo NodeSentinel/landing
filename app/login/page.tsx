@@ -2,6 +2,7 @@
 
 import Script from "next/script";
 import { Card, CardContent } from "@/components/ui/card";
+import { useEffect } from "react";
 
 declare global {
   interface Window {
@@ -15,19 +16,20 @@ declare global {
 }
 
 export default function LoginPage() {
-  // Define the callback function in the global scope
-  window.onTelegramAuth = (user) => {
-    alert(
-      "Logged in as " +
-        user.first_name +
-        " " +
-        user.last_name +
-        " (" +
-        user.id +
-        (user.username ? ", @" + user.username : "") +
-        ")"
-    );
-  };
+  useEffect(() => {
+    window.onTelegramAuth = (user) => {
+      alert(
+        "Logged in as " +
+          user.first_name +
+          " " +
+          user.last_name +
+          " (" +
+          user.id +
+          (user.username ? ", @" + user.username : "") +
+          ")"
+      );
+    };
+  }, []);
 
   return (
     <div className="container flex items-center justify-center min-h-screen py-12">
