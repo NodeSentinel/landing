@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Providers } from "./providers";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -39,12 +40,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${nicoMoji.variable} antialiased`}
       >
         <div className="flex flex-col min-h-screen text-primary">
-          <Header />
-          <main className="flex-grow min-h-screen px-4 sm:px-2">
-            {children}
-          </main>
-          <Footer />
-          <Analytics />
+          <Providers>
+            <Header />
+            <main className="flex-grow min-h-screen px-4 sm:px-2">
+              {children}
+            </main>
+            <Footer />
+            <Analytics />
+          </Providers>
         </div>
       </body>
     </html>
