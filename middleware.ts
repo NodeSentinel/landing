@@ -9,24 +9,23 @@ export const config = {
 
 export function middleware(request: NextRequest) {
   const origin = request.headers.get("origin");
-  const referer = request.headers.get("referer");
   const allowedOrigin = env.NEXT_PUBLIC_APP_URL;
 
   // Handle preflight requests
   if (request.method === "OPTIONS") {
-    const response = new NextResponse(null, { status: 204 });
-    response.headers.set(
-      "Access-Control-Allow-Origin",
-      env.BLOCK_API ? allowedOrigin : "*"
-    );
-    response.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
-    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
-    return response;
+    const headers = {
+      "Access-Control-Allow-Origin": env.BLOCK_API ? allowedOrigin : "*",
+      "Access-Control-Allow-Methods": "GET, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Max-Age": "86400", // 24 hours
+    };
+    return new NextResponse(null, { status: 204, headers });
   }
 
-  // If API blocking is enabled, verify the request source
+  // Handle actual requests
   if (env.BLOCK_API) {
-    // For API routes, strictly enforce origin checking
+    const referer = request.headers.get("referer");
+
     if (!origin && !referer) {
       return NextResponse.json(
         { error: "Missing origin or referer" },
@@ -44,9 +43,10 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  // Continue with the request
   const response = NextResponse.next();
 
-  // Add CORS headers
+  // Add CORS headers to the response
   response.headers.set(
     "Access-Control-Allow-Origin",
     env.BLOCK_API ? allowedOrigin : "*"

@@ -1,27 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  async headers() {
-    return [
-      {
-        // Apply these headers to all routes
-        source: "/api/:path*",
-        headers: [
-          {
-            key: "Access-Control-Allow-Origin",
-            value: process.env.NEXT_PUBLIC_APP_URL || "*",
-          },
-          {
-            key: "Access-Control-Allow-Methods",
-            value: "GET, OPTIONS",
-          },
-          {
-            key: "Access-Control-Allow-Headers",
-            value: "Content-Type",
-          },
-        ],
-      },
-    ];
-  },
-};
+const nextConfig = {};
 
 export default nextConfig;
