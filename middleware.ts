@@ -8,6 +8,17 @@ export const config = {
 };
 
 export function middleware(request: NextRequest) {
+  // Verify that the request has a valid Vercel-Proxy-Signature header
+  // This header is automatically added by Vercel's Edge Network
+  const isVercelProxyRequest = request.headers.get("x-vercel-proxy-signature");
+
+  if (env.BLOCK_API && !isVercelProxyRequest) {
+    return NextResponse.json(
+      { error: "Direct API access is not allowed" },
+      { status: 403 }
+    );
+  }
+
   const origin = request.headers.get("origin");
   const allowedOrigin = env.NEXT_PUBLIC_APP_URL;
 
