@@ -13,12 +13,10 @@ export function middleware(request: NextRequest) {
   const referer = request.headers.get("referer");
 
   // In development, allow localhost
-  const isDevelopment =
-    (process.env.NODE_ENV || "development") === "development";
   const allowedOrigin = env.NEXT_PUBLIC_APP_URL;
 
   // Check if the request is coming from an allowed origin
-  if (!isDevelopment && origin) {
+  if (!env.BLOCK_API && origin) {
     const isAllowedOrigin = origin === allowedOrigin;
     if (!isAllowedOrigin) {
       return NextResponse.json(
@@ -29,7 +27,7 @@ export function middleware(request: NextRequest) {
   }
 
   // If no origin header (direct API call), check referer
-  if (!isDevelopment && !origin && referer) {
+  if (!env.BLOCK_API && !origin && referer) {
     const refererUrl = new URL(referer);
     const isAllowedReferer = refererUrl.origin === allowedOrigin;
     if (!isAllowedReferer) {
@@ -46,7 +44,7 @@ export function middleware(request: NextRequest) {
   // Add the CORS headers
   response.headers.set(
     "Access-Control-Allow-Origin",
-    isDevelopment ? "*" : allowedOrigin!
+    env.BLOCK_API ? "*" : allowedOrigin!
   );
   response.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
   response.headers.set("Access-Control-Allow-Headers", "Content-Type");
