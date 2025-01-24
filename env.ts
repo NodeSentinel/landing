@@ -21,11 +21,9 @@ export const env = createEnv({
   },
   server: {
     DATABASE_URL: z.string().url(),
-    BLOCK_API: z.boolean(),
   },
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
-    BLOCK_API: false,
 
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     // beacon
