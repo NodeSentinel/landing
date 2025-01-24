@@ -15,7 +15,7 @@ export function middleware(request: NextRequest) {
   // In development, allow localhost
   const isDevelopment =
     (process.env.NODE_ENV || "development") === "development";
-  const allowedOrigin = env.NEXT_PUBLIC_DOMAIN;
+  const allowedOrigin = env.NEXT_PUBLIC_APP_URL;
 
   // Check if the request is coming from an allowed origin
   if (!isDevelopment && origin) {
