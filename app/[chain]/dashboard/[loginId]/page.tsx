@@ -2,19 +2,10 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
-import { fetchUserData } from "@/lib/services/user";
 import { Skeleton } from "@/components/ui/skeleton";
 import { PageContainer } from "@/components/ui/page-container";
 import { InfiniteValidatorGrid } from "@/components/ui/infinite-validator-grid";
-
-interface UserData {
-  username: string;
-  validatorStatuses: {
-    activeIds: number[];
-    inactiveIds: number[];
-    slashedIds: number[];
-  };
-}
+import { UserValidators } from "@/apiTypes";
 
 function ValidatorSection({
   title,
@@ -24,7 +15,7 @@ function ValidatorSection({
 }: {
   title: string;
   ids: number[];
-  status: "active" | "inactive" | "slashed";
+  status: "active" | "inactive";
   chain: "gnosis" | "mainnet";
 }) {
   if (ids.length === 0) return null;
@@ -92,9 +83,17 @@ export default function DashboardPage({
     data: userData,
     error,
     isLoading,
-  } = useQuery<UserData, Error>({
+  } = useQuery<UserValidators, Error>({
     queryKey: ["user", params.chain, params.loginId],
-    queryFn: () => fetchUserData(params.chain, params.loginId),
+    queryFn: async () => {
+      const res = await fetch(
+        `/api/${params.chain}/user/${params.loginId}/validators`
+      );
+      if (!res.ok) {
+        throw new Error("Failed to fetch user data");
+      }
+      return res.json();
+    },
   });
 
   if (isLoading) return <DashboardSkeleton />;

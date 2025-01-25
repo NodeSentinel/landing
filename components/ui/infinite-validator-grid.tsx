@@ -9,7 +9,7 @@ const ITEMS_PER_PAGE = 100;
 
 interface InfiniteValidatorGridProps {
   ids: number[];
-  status: "active" | "inactive" | "slashed";
+  status: "active" | "inactive";
   chain: "gnosis" | "mainnet";
 }
 

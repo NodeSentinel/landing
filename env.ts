@@ -3,43 +3,21 @@ import { z } from "zod";
 
 export const env = createEnv({
   client: {
-    NEXT_PUBLIC_APP_URL: z.string().url(),
-
-    // beacon
-    NEXT_PUBLIC_BEACON_DELAY_SLOTS_TO_HEAD: z.number(),
-    NEXT_PUBLIC_BEACON_MAX_ATTESTATION_DELAY: z.number(),
-    // Gnosis
     NEXT_PUBLIC_GNOSIS_BEACONCHAIN_URL: z.string().url(),
-    NEXT_PUBLIC_GNOSIS_BEACON_SLOT_PER_EPOCH: z.number(),
-    NEXT_PUBLIC_GNOSIS_BEACON_SLOT_DURATION_IN_SECONDS: z.number(),
-    NEXT_PUBLIC_GNOSIS_BEACON_GENESIS_TIMESTAMP: z.number(),
-    // Mainnet
     NEXT_PUBLIC_MAINNET_BEACONCHAIN_URL: z.string().url(),
-    NEXT_PUBLIC_MAINNET_BEACON_SLOT_PER_EPOCH: z.number(),
-    NEXT_PUBLIC_MAINNET_BEACON_SLOT_DURATION_IN_SECONDS: z.number(),
-    NEXT_PUBLIC_MAINNET_BEACON_GENESIS_TIMESTAMP: z.number(),
   },
   server: {
-    DATABASE_URL: z.string().url(),
+    GNOSIS_API_URL: z.string().url(),
+    MAINNET_API_URL: z.string().url(),
+    API_SECRET_KEY: z.string(),
   },
   runtimeEnv: {
-    DATABASE_URL: process.env.DATABASE_URL,
+    GNOSIS_API_URL: process.env.GNOSIS_API_URL,
+    MAINNET_API_URL: process.env.MAINNET_API_URL,
+    API_SECRET_KEY: process.env.API_SECRET_KEY,
 
-    NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
-    // beacon
-    NEXT_PUBLIC_BEACON_DELAY_SLOTS_TO_HEAD: 2,
-    NEXT_PUBLIC_BEACON_MAX_ATTESTATION_DELAY: 5,
-    // Gnosis
     NEXT_PUBLIC_GNOSIS_BEACONCHAIN_URL: "https://gnosischa.in",
-    NEXT_PUBLIC_GNOSIS_BEACON_SLOT_DURATION_IN_SECONDS: 5,
-    NEXT_PUBLIC_GNOSIS_BEACON_SLOT_PER_EPOCH: 16,
-    NEXT_PUBLIC_GNOSIS_BEACON_GENESIS_TIMESTAMP: 1638993340000,
-    // Mainnet
     NEXT_PUBLIC_MAINNET_BEACONCHAIN_URL: "https://beaconcha.in",
-    NEXT_PUBLIC_MAINNET_BEACON_SLOT_PER_EPOCH: 32,
-    NEXT_PUBLIC_MAINNET_BEACON_SLOT_DURATION_IN_SECONDS: 12,
-    NEXT_PUBLIC_MAINNET_BEACON_GENESIS_TIMESTAMP: 0,
-    //...process.env,
   },
   emptyStringAsUndefined: true,
 });
