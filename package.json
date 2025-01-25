@@ -4,12 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npx prisma generate && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^6.2.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@t3-oss/env-nextjs": "^0.11.1",
     "@tanstack/react-query": "^5.64.2",
