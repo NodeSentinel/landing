@@ -1,122 +1,179 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useQuery } from "@tanstack/react-query";
+import { SpecificPricingResponse } from "@/apiTypes";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Card, CardContent } from "@/components/ui/card";
 
-const BASE_PRICE = 0.075; // Base price per validator
-const MAX_DISCOUNT = 0.8; // Adjusted maximum discount for higher validators
-const MAX_VALIDATORS_FOR_DISCOUNT = 6000; // Maximum validators for discount
-
-type DiscountResult =
-  | { totalPrice: number; pricePerValidator: number; discount: number }
-  | { totalPrice: "contact"; pricePerValidator: number; discount: number };
-
-// Aggressively exponential discount function with enhanced rapid growth
-const calculateExponentialDiscount = (validators: number): DiscountResult => {
-  if (validators <= 30) {
-    return { totalPrice: 0, pricePerValidator: 0, discount: 1 };
+async function fetchPrice(
+  chain: string,
+  validators: number
+): Promise<SpecificPricingResponse> {
+  const res = await fetch(
+    `/api/${chain}/pricing/calculate?validators=${validators}`
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch price");
   }
-  if (validators > MAX_VALIDATORS_FOR_DISCOUNT) {
-    return {
-      totalPrice: "contact" as const,
-      pricePerValidator: 0,
-      discount: 0,
-    };
-  }
-  // Adjusting exponential growth to enhance discounts at higher validator counts
-  const discountFactor = 1 - Math.exp(-0.0025 * validators); // Increased growth rate
-  const discount = Math.min(discountFactor * MAX_DISCOUNT, MAX_DISCOUNT);
-  const pricePerValidator = BASE_PRICE * (1 - discount);
-  const totalPrice = pricePerValidator * validators;
-  return { totalPrice: totalPrice as number, pricePerValidator, discount };
-};
+  return res.json();
+}
 
 export default function PriceSimulator() {
   const [validators, setValidators] = useState<string>("");
-  const [price, setPrice] = useState<number | string>(0);
-  const [pricePerValidator, setPricePerValidator] = useState<number>(0);
-  const [discount, setDiscount] = useState<number>(0);
+  const [selectedChain, setSelectedChain] = useState<"gnosis" | "mainnet">(
+    "gnosis"
+  );
 
-  useEffect(() => {
-    const count = Number(validators);
-    if (isNaN(count) || count <= 0) {
-      setPrice(0);
-      setPricePerValidator(0);
-      setDiscount(0);
-      return;
-    }
+  const { data: priceData, isLoading } = useQuery({
+    queryKey: ["price", selectedChain, validators],
+    queryFn: () => fetchPrice(selectedChain, Number(validators)),
+    enabled: Boolean(validators) && Number(validators) > 0,
+  });
 
-    const { totalPrice, pricePerValidator, discount } =
-      calculateExponentialDiscount(count);
-    if (totalPrice === "contact") {
-      setPrice("contact us");
-      setPricePerValidator(0);
-      setDiscount(0);
-    } else {
-      setPrice(Math.round(totalPrice * 100) / 100);
-      setPricePerValidator(Math.round(pricePerValidator * 1000) / 1000);
-      setDiscount(Math.round(discount * 100));
-    }
-  }, [validators]);
+  const isMainnet = selectedChain === "mainnet";
+  const isFree = priceData?.monthlyPrice === 0;
 
   return (
-    <section id="priceSimulator" className="py-20 bg-background">
+    <section
+      id="priceSimulator"
+      className="py-20 bg-gradient-to-b from-background to-background/80"
+    >
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
-          Price Simulator
-        </h2>
-        <div className="max-w-md mx-auto bg-card p-6 rounded-lg border border-border">
-          <div className="mb-4">
-            <label
-              htmlFor="validators"
-              className="block text-sm font-medium text-foreground mb-2"
-            >
-              Number of Validators
-            </label>
-            <Input
-              type="number"
-              id="validators"
-              value={validators}
-              onChange={(e) => setValidators(e.target.value)}
-              className="bg-white border-input text-foreground"
-            />
-          </div>
-          {Number(validators) > 0 ? (
-            <div className="mt-6 text-center space-y-2">
-              {price === "contact us" ? (
-                <p className="text-2xl font-bold text-foreground">
-                  Contact us for pricing
-                </p>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
+            Price Simulator
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Calculate your monthly cost based on the number of validators you
+            want to monitor
+          </p>
+        </div>
+
+        <Card className="max-w-md mx-auto border-2 hover:border-primary/50 transition-colors duration-300">
+          <CardContent className="p-6 space-y-6">
+            <div className="space-y-4">
+              <div>
+                <label
+                  htmlFor="chain"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
+                  Chain
+                </label>
+                <Select
+                  value={selectedChain}
+                  onValueChange={(value: "gnosis" | "mainnet") =>
+                    setSelectedChain(value)
+                  }
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select chain" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="gnosis">Gnosis Chain</SelectItem>
+                    <SelectItem value="mainnet">Ethereum Mainnet</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="validators"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
+                  Number of Validators
+                </label>
+                <Input
+                  type="number"
+                  id="validators"
+                  value={validators}
+                  onChange={(e) => setValidators(e.target.value)}
+                  className="bg-background/50 border-input text-foreground"
+                  disabled={isMainnet}
+                  min="0"
+                  placeholder="Enter number of validators"
+                />
+              </div>
+            </div>
+
+            <div>
+              {isMainnet ? (
+                <div className="text-center">
+                  <p className="text-lg font-semibold text-primary">
+                    Coming soon to Ethereum Mainnet!
+                  </p>
+                </div>
               ) : (
-                <>
-                  {price === 0 ? (
-                    <p className="text-2xl font-bold text-foreground">
-                      Free tier! (up to 30 validators)
-                    </p>
-                  ) : (
+                <div className="text-center space-y-3">
+                  {isLoading ? (
+                    <div className="space-y-2">
+                      <Skeleton className="h-8 w-32 mx-auto" />
+                      <Skeleton className="h-4 w-24 mx-auto" />
+                      <Skeleton className="h-4 w-28 mx-auto" />
+                    </div>
+                  ) : Number(validators) > 0 && priceData ? (
                     <>
-                      <p className="text-2xl font-bold text-foreground">
-                        USD ${price}/month
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        ${pricePerValidator.toFixed(3)} per validator
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {`You're getting a ${discount}% discount!`}
-                      </p>
+                      {isFree ? (
+                        <div className="space-y-2">
+                          <p className="text-2xl font-bold text-emerald-600">
+                            Free Tier
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            Monitor up to 20 validators at no cost
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="space-y-3">
+                          <div>
+                            <p className="text-3xl font-bold text-foreground mb-2">
+                              USD ${priceData.monthlyPrice}/month
+                            </p>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Monitor up to <b>{priceData.maxValidators}</b>{" "}
+                              validators
+                            </p>
+                            <div className="bg-primary/10 py-2 px-4 rounded-full inline-block">
+                              <p className="text-sm font-medium text-primary">
+                                {`$${priceData.pricePerValidator} per validator`}
+                                <br />
+                                {`${(
+                                  priceData.subscriptionPercentage *
+                                  (priceData.maxValidators / Number(validators))
+                                ).toFixed(
+                                  7
+                                )}% of your ${validators} staked value`}
+                              </p>
+                            </div>
+                            {/*  {priceData.yearlyDiscount > 0 && (
+                              <div className="bg-yellow-100 text-yellow-800 py-2 px-4 rounded-full inline-block mt-2">
+                                <p className="text-sm font-medium">
+                                  Save ${priceData.yearlySavings} with yearly
+                                  billing
+                                </p>
+                              </div>
+                            )} */}
+                          </div>
+                        </div>
+                      )}
                     </>
+                  ) : (
+                    <p className="text-sm text-muted-foreground">
+                      Enter the number of validators to see pricing
+                    </p>
                   )}
-                </>
+                </div>
               )}
             </div>
-          ) : (
-            <div className="mt-6 text-center">
-              <p className="text-sm text-muted-foreground">
-                Enter the number of validators to see pricing
-              </p>
-            </div>
-          )}
-        </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );

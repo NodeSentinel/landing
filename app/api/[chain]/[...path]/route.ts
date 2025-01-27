@@ -24,12 +24,23 @@ export async function GET(
     // Reconstruct the API path
     const apiPath = path.join("/");
 
+    // Get the search params from the request
+    const searchParams = request.nextUrl.searchParams;
+
     // Determine which API URL to use based on chain
     const apiBaseUrl =
       chain === "gnosis" ? env.GNOSIS_API_URL : env.MAINNET_API_URL;
 
+    // Construct the full URL with search params
+    const url = new URL(`${apiBaseUrl}/api/${apiPath}`);
+    searchParams.forEach((value, key) => {
+      url.searchParams.append(key, value);
+    });
+
+    console.log(">>> Forwarding request to:", url.toString());
+
     // Forward the request to the appropriate backend
-    const response = await fetch(`${apiBaseUrl}/api/${apiPath}`, {
+    const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${env.API_SECRET_KEY}`,
         "Content-Type": "application/json",
