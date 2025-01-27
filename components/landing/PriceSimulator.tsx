@@ -39,8 +39,16 @@ export default function PriceSimulator() {
     enabled: Boolean(validators) && Number(validators) > 0,
   });
 
+  const APR = 9.5;
   const isMainnet = selectedChain === "mainnet";
   const isFree = priceData?.monthlyPrice === 0;
+
+  // Calcular rewards mensuales
+  const calculateMonthlyRewards = (validators: number, tokenPrice: number) => {
+    const totalStaked = validators * tokenPrice;
+    const yearlyRewards = (totalStaked * APR) / 100;
+    return yearlyRewards / 12;
+  };
 
   return (
     <section
@@ -133,33 +141,32 @@ export default function PriceSimulator() {
                       ) : (
                         <div className="space-y-3">
                           <div>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Plan for up to <b>{priceData.maxValidators}</b>{" "}
+                              validators at{" "}
+                              {`$${priceData.pricePerValidator} per validator`}
+                            </p>
                             <p className="text-3xl font-bold text-foreground mb-2">
                               USD ${priceData.monthlyPrice}/month
                             </p>
-                            <p className="text-sm text-muted-foreground mb-2">
-                              Monitor up to <b>{priceData.maxValidators}</b>{" "}
-                              validators
-                            </p>
                             <div className="bg-primary/10 py-2 px-4 rounded-full inline-block">
                               <p className="text-sm font-medium text-primary">
-                                {`$${priceData.pricePerValidator} per validator`}
-                                <br />
-                                {`${(
+                                {/*  {`~${(
                                   priceData.subscriptionPercentage *
                                   (priceData.maxValidators / Number(validators))
                                 ).toFixed(
                                   7
-                                )}% of your ${validators} staked value`}
+                                )}% of your ${validators}GNO staked value`} */}
+                                {`~${(
+                                  (priceData.monthlyPrice /
+                                    calculateMonthlyRewards(
+                                      Number(validators),
+                                      priceData.tokenPrice
+                                    )) *
+                                  100
+                                ).toFixed(2)}% of your monthly rewards`}
                               </p>
                             </div>
-                            {/*  {priceData.yearlyDiscount > 0 && (
-                              <div className="bg-yellow-100 text-yellow-800 py-2 px-4 rounded-full inline-block mt-2">
-                                <p className="text-sm font-medium">
-                                  Save ${priceData.yearlySavings} with yearly
-                                  billing
-                                </p>
-                              </div>
-                            )} */}
                           </div>
                         </div>
                       )}
