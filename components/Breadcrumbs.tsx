@@ -1,4 +1,9 @@
-export default function Breadcrumbs({ items }) {
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
   return (
     <>
       <script
