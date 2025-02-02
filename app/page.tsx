@@ -5,18 +5,61 @@ import SupportUsSection from "@/components/landing/SupportUsSection";
 // import SupportedBySection from "@/components/landing/SupportedBySection";
 // import PriceSimulator from "@/components/landing/PriceSimulator";
 import { PageContainer } from "@/components/ui/page-container";
+import SchemaOrg from "@/components/SchemaOrg";
 
 export default function Home() {
   return (
-    <PageContainer>
-      <HeroSection />
-      <FeaturesSection />
-      <StatsSection />
-      {/* <BlockchainSection /> */}
-      {/* <PricingSection /> */}
-      {/* <PriceSimulator /> */}
-      <SupportUsSection />
-      {/* <SupportedBySection /> */}
-    </PageContainer>
+    <>
+      <SchemaOrg />
+      <PageContainer>
+        <HeroSection />
+        <FeaturesSection />
+        <StatsSection />
+        {/* <BlockchainSection /> */}
+        {/* <PricingSection /> */}
+        {/* <PriceSimulator /> */}
+        <SupportUsSection />
+        {/* <SupportedBySection /> */}
+      </PageContainer>
+    </>
   );
 }
+
+export const metadata = {
+  title: "Node Sentinel - Your Go-To Tool for Blockchain Validator Monitoring",
+  description:
+    "Node Sentinel is a monitoring platform for blockchain validators, focused on simplicity and practicality. We provide real-time notifications, performance stats, and customizable features, giving users full control to manage and optimize their validators with ease.",
+  keywords:
+    "Node Sentinel, Beacon Chain, beacon validators, Validator Monitoring, Ethereum, Gnosis, Blockchain, Validator Management",
+  openGraph: {
+    title: "Node Sentinel - Blockchain Validator Monitoring Platform",
+    description: "Monitor and optimize your blockchain validators with ease",
+    type: "website",
+    locale: "en_US",
+    url: "https://node-sentinel.xyz",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Node Sentinel Dashboard",
+      },
+    ],
+    siteName: "Node Sentinel",
+  },
+  telegram: {
+    channel: "t.me/node_sentinel",
+    bot: "@gbc_validators_bot",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};

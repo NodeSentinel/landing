@@ -11,7 +11,7 @@ const address = "0xDA74B77BA4BE36619b248088214D807A581292C4";
 
 export default function SupportUsSection() {
   return (
-    <section className="py-20 text-primary bg-gradient-to-r from-primary/10 to-primary/20">
+    <section className="py-20 bg-gradient-to-b from-background to-background/80">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold  mb-12">Find this tool useful?</h2>
         <h2 className="text-xl  mb-4">Support us!</h2>
