@@ -19,12 +19,12 @@ export default function Header() {
           <Link href="/gnosis/incident/abc123" className="text-gray-300 hover:text-cyan-400 transition duration-300">Sample Incident</Link>
           <Link href="#features" className="text-gray-300 hover:text-cyan-400 transition duration-300">Features</Link>
           <Link href="#blockchains" className="text-gray-300 hover:text-cyan-400 transition duration-300">Blockchains</Link>*/}
-          <Link
+          {/* <Link
             href="#priceSimulator"
             className="text-muted-foreground hover:text-primary transition duration-300"
           >
             Price Simulator
-          </Link>
+          </Link> */}
         </div>
       </nav>
     </header>
