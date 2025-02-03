@@ -60,3 +60,7 @@
     text-wrap: balance;
   }
 }
+
+.modal-open {
+  overflow: hidden;
+}
