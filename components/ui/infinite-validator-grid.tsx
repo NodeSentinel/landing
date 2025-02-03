@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { env } from "@/env";
+import { getBeaconExplorerValidatorUrl } from "@/utils/misc";
 
 const ITEMS_PER_PAGE = 100;
 
@@ -57,11 +57,7 @@ export function InfiniteValidatorGrid({
           {displayedIds.map((id) => (
             <Link
               key={id}
-              href={`${
-                chain == "gnosis"
-                  ? env.NEXT_PUBLIC_GNOSIS_BEACONCHAIN_URL
-                  : env.NEXT_PUBLIC_MAINNET_BEACONCHAIN_URL
-              }/validator/${id}`}
+              href={getBeaconExplorerValidatorUrl(chain, id)}
               target="_blank"
               rel="noopener noreferrer"
               className={`

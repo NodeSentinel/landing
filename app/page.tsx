@@ -28,7 +28,7 @@ export default function Home() {
 export const metadata = {
   title: "Node Sentinel - Your Go-To Tool for Blockchain Validator Monitoring",
   description:
-    "Node Sentinel is a monitoring platform for blockchain validators, focused on simplicity and practicality. We provide real-time notifications, performance stats, and customizable features, giving users full control to manage and optimize their validators with ease.",
+    "Node Sentinel is a monitoring tool for blockchain validators, designed for simplicity and practicality. It provides real-time customizable notifications and detailed performance stats, helping node operators track validator health and maximize rewards.",
   keywords:
     "Node Sentinel, Beacon Chain, beacon validators, Validator Monitoring, Ethereum, Gnosis, Blockchain, Validator Management",
   openGraph: {
