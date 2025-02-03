@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { UserInfo } from "@/apiTypes";
-import { groupValidatorsByWithdrawalAddress } from "@/utils/groupValidatorsByWithdrawalAddress";
 
 export function useUserInfo(chain: string, loginId: string) {
   return useQuery<UserInfo>({

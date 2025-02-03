@@ -29,7 +29,10 @@ import { Modal } from "@/components/ui/modal";
 import { X } from "lucide-react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import React from "react";
-import { getBeaconExplorerValidatorUrl } from "@/utils/getBeaconExplorer";
+import {
+  getBeaconExplorerValidatorUrl,
+  getBeaconMaxAttestationDelay,
+} from "@/utils/misc";
 
 interface ChartData {
   slot: number;
@@ -42,6 +45,12 @@ interface ChartClickData {
   activePayload?: Array<{
     payload: ChartData;
   }>;
+}
+
+interface SlotData {
+  slot: number;
+  timestamp: number;
+  validators: number[];
 }
 
 const VALIDATORS_PER_PAGE = 20;
@@ -111,16 +120,13 @@ export function MissedAttestationsView({
           acc[item.slot] = {
             slot: item.slot,
             timestamp: item.timestamp,
-            validators: 0,
+            validators: [],
           };
         }
-        acc[item.slot].validators += 1;
+        acc[item.slot].validators.push(item.validatorIndex);
         return acc;
       },
-      {} as Record<
-        number,
-        { slot: number; timestamp: number; validators: number }
-      >
+      {} as Record<number, SlotData>
     );
 
     // Convert to array and add minutesAgo
@@ -131,7 +137,7 @@ export function MissedAttestationsView({
 
         return {
           slot: item.slot,
-          validators: item.validators,
+          validators: item.validators.length,
           minutesAgo,
           label: `${minutesAgo}m ago`,
         };
@@ -167,7 +173,13 @@ export function MissedAttestationsView({
         <CardHeader>
           <CardTitle>Last 1h missed attestations</CardTitle>
           <CardDescription>
-            Total missed attestations: {userData.missedAttestations.length}
+            <div>
+              Total missed attestations: {userData.missedAttestations.length}
+            </div>
+            <div>
+              A slot is considered missed if the validator attested after{" "}
+              {getBeaconMaxAttestationDelay(chain)} slots.
+            </div>
           </CardDescription>
         </CardHeader>
         <CardContent className="px-2">
@@ -207,13 +219,16 @@ export function MissedAttestationsView({
           </button>
           <CardHeader>
             <CardTitle>Slot {selectedSlot} Details</CardTitle>
-            <CardDescription>
-              Time:{" "}
-              {selectedSlotValidators.length > 0 &&
-                format(
-                  new Date(selectedSlotValidators[0].timestamp),
-                  "MMM d, yyyy HH:mm:ss"
-                )}
+            <CardDescription className="space-y-1">
+              <div>
+                Time:{" "}
+                {selectedSlotValidators.length > 0 &&
+                  format(
+                    new Date(selectedSlotValidators[0].timestamp),
+                    "MMM d, yyyy HH:mm:ss"
+                  )}
+              </div>
+              <div>Validators affected: {selectedSlotValidators.length}</div>
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -236,18 +251,19 @@ export function MissedAttestationsView({
                     {selectedSlotValidators
                       .slice(0, displayedValidators)
                       .map((validator) => (
-                        <TableRow key={validator.index}>
+                        <TableRow key={validator.validatorIndex}>
                           <TableCell>
                             <a
                               href={`${getBeaconExplorerValidatorUrl(
                                 chain,
-                                validator.index
+                                validator.validatorIndex
                               )}#attestations`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-primary hover:underline"
+                              className="text-primary hover:underline flex items-center gap-1 w-fit"
                             >
-                              {validator.index}
+                              {validator.validatorIndex}
+                              <span className="text-xs">↗</span>
                             </a>
                           </TableCell>
                           <TableCell>

@@ -75,14 +75,15 @@ export type NodeBillingResponse = {
   timestamp: string;
 };
 
+export type ValidatorStatuses = {
+  activeIds: number[];
+  inactiveIds: number[];
+  slashedIds: number[];
+  exitedIds: number[];
+};
+
 export type ValidatorStatusesByWithdrawal = {
-  withdrawalAddress: string;
-  validatorStatuses: {
-    activeIds: number[];
-    inactiveIds: number[];
-    slashedIds: number[];
-    exitedIds: number[];
-  };
+  [withdrawalAddress: string]: ValidatorStatuses;
 };
 
 export type ValidatorInfo = {
@@ -93,11 +94,12 @@ export type ValidatorInfo = {
 
 export type UserInfo = {
   username: string;
-  validators: ValidatorInfo[];
+  validatorsByWithdrawal: ValidatorStatusesByWithdrawal;
   missedAttestations: {
     slot: number;
     timestamp: number;
     index: number;
     attestationDelay: number | null;
+    validatorIndex: number;
   }[];
 };

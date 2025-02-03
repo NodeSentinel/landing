@@ -7,12 +7,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AutoSizer, List } from "react-virtualized";
-import { groupValidatorsByWithdrawalAddress } from "@/utils/groupValidatorsByWithdrawalAddress";
+import { AutoSizer, List, ListRowProps } from "react-virtualized";
 import { Input } from "@/components/ui/input";
 import { useUserInfo } from "@/hooks/useUserInfo";
 import { Skeleton } from "@/components/ui/skeleton";
-import { shortenAddress } from "@/utils/misc";
+import { getBeaconExplorerValidatorUrl, shortenAddress } from "@/utils/misc";
 
 type ValidatorStatus = "active" | "inactive" | "slashed" | "exited" | "all";
 
@@ -84,79 +83,78 @@ export function ValidatorTable({
   });
   const { data: userData, isLoading } = useUserInfo(chain, loginId);
 
-  const groupedValidators = useMemo(
-    () =>
-      userData ? groupValidatorsByWithdrawalAddress(userData.validators) : [],
-    [userData]
-  );
-
   // Flatten and transform data for easier filtering
   const allValidators = useMemo(() => {
-    if (!groupedValidators.length) return [];
+    if (!userData) return [];
 
     const validators: ValidatorEntry[] = [];
 
-    groupedValidators.forEach((withdrawal) => {
-      // Add inactive validators first
-      withdrawal.validatorStatuses.inactiveIds.forEach((id) => {
-        validators.push({
-          id,
-          status: "inactive",
-          withdrawalAddress: withdrawal.withdrawalAddress,
+    // Iterate over withdrawal addresses
+    Object.entries(userData.validatorsByWithdrawal).forEach(
+      ([address, statuses]) => {
+        // Add inactive validators first
+        statuses.inactiveIds.forEach((id) => {
+          validators.push({
+            id,
+            status: "inactive",
+            withdrawalAddress: address,
+          });
         });
-      });
 
-      // Then add active validators
-      withdrawal.validatorStatuses.activeIds.forEach((id) => {
-        validators.push({
-          id,
-          status: "active",
-          withdrawalAddress: withdrawal.withdrawalAddress,
+        // Then add active validators
+        statuses.activeIds.forEach((id) => {
+          validators.push({
+            id,
+            status: "active",
+            withdrawalAddress: address,
+          });
         });
-      });
 
-      withdrawal.validatorStatuses.slashedIds.forEach((id) => {
-        validators.push({
-          id,
-          status: "slashed",
-          withdrawalAddress: withdrawal.withdrawalAddress,
+        statuses.slashedIds.forEach((id) => {
+          validators.push({
+            id,
+            status: "slashed",
+            withdrawalAddress: address,
+          });
         });
-      });
 
-      withdrawal.validatorStatuses.exitedIds.forEach((id) => {
-        validators.push({
-          id,
-          status: "exited",
-          withdrawalAddress: withdrawal.withdrawalAddress,
+        statuses.exitedIds.forEach((id) => {
+          validators.push({
+            id,
+            status: "exited",
+            withdrawalAddress: address,
+          });
         });
-      });
-    });
+      }
+    );
 
     return validators;
-  }, [groupedValidators]);
+  }, [userData]);
 
   // Summary statistics
   const summary = useMemo(() => {
-    if (!groupedValidators.length) return { byWithdrawal: [], total: 0 };
+    if (!userData) return { byWithdrawal: [], total: 0 };
 
-    const stats = groupedValidators.map((withdrawal) => ({
-      withdrawalAddress: withdrawal.withdrawalAddress,
-      total:
-        withdrawal.validatorStatuses.activeIds.length +
-        withdrawal.validatorStatuses.inactiveIds.length +
-        withdrawal.validatorStatuses.slashedIds.length +
-        withdrawal.validatorStatuses.exitedIds.length,
-      active: withdrawal.validatorStatuses.activeIds.length,
-      inactive: withdrawal.validatorStatuses.inactiveIds.length,
-      slashed: withdrawal.validatorStatuses.slashedIds.length,
-      exited: withdrawal.validatorStatuses.exitedIds.length,
-    }));
+    const stats = Object.entries(userData.validatorsByWithdrawal).map(
+      ([address, statuses]) => ({
+        withdrawalAddress: address,
+        total:
+          statuses.activeIds.length +
+          statuses.inactiveIds.length +
+          statuses.slashedIds.length +
+          statuses.exitedIds.length,
+        active: statuses.activeIds.length,
+        inactive: statuses.inactiveIds.length,
+        slashed: statuses.slashedIds.length,
+        exited: statuses.exitedIds.length,
+      })
+    );
 
     return {
       byWithdrawal: stats,
       total: stats.reduce((acc, curr) => acc + curr.total, 0),
     };
-  }, [groupedValidators]);
+  }, [userData]);
 
   // Apply filters
   const filteredValidators = useMemo(() => {
@@ -196,13 +194,23 @@ export function ValidatorTable({
     }
   };
 
-  const rowRenderer = ({ index, key, style }: any) => {
+  const rowRenderer = ({ index, key, style }: ListRowProps) => {
     const validator = filteredValidators[index];
     if (!validator) return null;
 
     return (
       <div key={key} style={style} className="flex border-b hover:bg-muted/50">
-        <div className="flex-1 p-4">{validator.id}</div>
+        <div className="flex-1 p-4">
+          <a
+            href={`${getBeaconExplorerValidatorUrl(chain, validator.id)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline flex items-center gap-1 w-fit"
+          >
+            {validator.id}
+            <span className="text-xs">↗</span>
+          </a>
+        </div>
         <div className={`flex-1 p-4 ${getStatusColor(validator.status)}`}>
           {validator.status}
         </div>
@@ -268,14 +276,13 @@ export function ValidatorTable({
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All Addresses</SelectItem>
-              {groupedValidators.map((w) => (
-                <SelectItem
-                  key={w.withdrawalAddress}
-                  value={w.withdrawalAddress}
-                >
-                  {shortenAddress(w.withdrawalAddress)}
-                </SelectItem>
-              ))}
+              {Object.keys(userData?.validatorsByWithdrawal || {}).map(
+                (address) => (
+                  <SelectItem key={address} value={address}>
+                    {shortenAddress(address)}
+                  </SelectItem>
+                )
+              )}
             </SelectContent>
           </Select>
 

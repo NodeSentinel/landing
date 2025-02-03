@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { getBeaconExplorerValidatorUrl } from "@/utils/getBeaconExplorer";
+import { getBeaconExplorerValidatorUrl } from "@/utils/misc";
 
 const ITEMS_PER_PAGE = 100;
 

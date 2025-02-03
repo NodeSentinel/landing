@@ -5,6 +5,8 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_GNOSIS_BEACONCHAIN_URL: z.string().url(),
     NEXT_PUBLIC_MAINNET_BEACONCHAIN_URL: z.string().url(),
+    NEXT_PUBLIC_GNOSIS_BEACON_MAX_ATTESTATION_DELAY: z.number(),
+    NEXT_PUBLIC_MAINNET_BEACON_MAX_ATTESTATION_DELAY: z.number(),
   },
   server: {
     GNOSIS_API_URL: z.string().url(),
@@ -16,6 +18,8 @@ export const env = createEnv({
     MAINNET_API_URL: process.env.MAINNET_API_URL,
     API_SECRET_KEY: process.env.API_SECRET_KEY,
 
+    NEXT_PUBLIC_GNOSIS_BEACON_MAX_ATTESTATION_DELAY: 5,
+    NEXT_PUBLIC_MAINNET_BEACON_MAX_ATTESTATION_DELAY: 5,
     NEXT_PUBLIC_GNOSIS_BEACONCHAIN_URL: "https://gnosischa.in",
     NEXT_PUBLIC_MAINNET_BEACONCHAIN_URL: "https://beaconcha.in",
   },
