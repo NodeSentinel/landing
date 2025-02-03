@@ -28,7 +28,7 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
           <Button className="px-8 py-6">
             <Link
-              href="https://t.me/devBeaconValidator_bot"
+              href="https://t.me/gbc_validators_bot"
               target="_blank"
               rel="noopener noreferrer"
             >
