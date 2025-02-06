@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { format, differenceInMinutes } from "date-fns";
+import { differenceInMinutes } from "date-fns";
 import {
   Card,
   CardContent,
@@ -33,12 +33,14 @@ import {
   getBeaconExplorerValidatorUrl,
   getBeaconMaxAttestationDelay,
 } from "@/utils/misc";
+import { formatNumber, formatTime } from "@/lib/utils";
 
 interface ChartData {
   slot: number;
   validators: number;
   minutesAgo: number;
   label: string;
+  timestamp: number;
 }
 
 interface ChartClickData {
@@ -85,10 +87,13 @@ const CustomTooltip = ({
     return (
       <div className="bg-popover border rounded p-2 text-sm space-y-1">
         <p className="text-popover-foreground">
-          Validators: {payload[0].value}
+          <b>Slot: {formatNumber(payload[0].payload.slot)}</b>
+        </p>
+        <p className="text-popover-foreground font-mono">
+          Time: {formatTime(payload[0].payload.timestamp)}
         </p>
         <p className="text-popover-foreground">
-          Slot: {payload[0].payload.slot}
+          Validators: {formatNumber(payload[0].value)}
         </p>
       </div>
     );
@@ -140,6 +145,7 @@ export function MissedAttestationsView({
           validators: item.validators.length,
           minutesAgo,
           label: `${minutesAgo}m ago`,
+          timestamp: item.timestamp,
         };
       })
       .sort((a, b) => a.slot - b.slot);
@@ -147,9 +153,9 @@ export function MissedAttestationsView({
 
   const selectedSlotValidators = useMemo(() => {
     if (!userData || !selectedSlot) return [];
-    return userData.missedAttestations.filter(
-      (item) => item.slot === selectedSlot
-    );
+    return userData.missedAttestations
+      .filter((item) => item.slot === selectedSlot)
+      .sort((a, b) => a.validatorIndex - b.validatorIndex);
   }, [userData, selectedSlot]);
 
   const loadMoreValidators = (): void => {
@@ -172,9 +178,10 @@ export function MissedAttestationsView({
       <Card>
         <CardHeader>
           <CardTitle>Last 1h missed attestations</CardTitle>
-          <CardDescription>
+          <CardDescription className="space-y-1">
             <div>
-              Total missed attestations: {userData.missedAttestations.length}
+              Total missed attestations:{" "}
+              {formatNumber(userData.missedAttestations.length)}
             </div>
             <div>
               A slot is considered missed if the validator attested after{" "}
@@ -218,17 +225,17 @@ export function MissedAttestationsView({
             <X className="h-4 w-4" />
           </button>
           <CardHeader>
-            <CardTitle>Slot {selectedSlot} Details</CardTitle>
+            <CardTitle>Slot {formatNumber(selectedSlot!)} Details</CardTitle>
             <CardDescription className="space-y-1">
               <div>
                 Time:{" "}
                 {selectedSlotValidators.length > 0 &&
-                  format(
-                    new Date(selectedSlotValidators[0].timestamp),
-                    "MMM d, yyyy HH:mm:ss"
-                  )}
+                  formatTime(selectedSlotValidators[0].timestamp)}
               </div>
-              <div>Validators affected: {selectedSlotValidators.length}</div>
+              <div>
+                Validators affected:{" "}
+                {formatNumber(selectedSlotValidators.length)}
+              </div>
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -244,7 +251,7 @@ export function MissedAttestationsView({
                   <TableHeader>
                     <TableRow>
                       <TableHead>Validator ID</TableHead>
-                      <TableHead>Attestation Delay</TableHead>
+                      <TableHead>Delay / Missed</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>

@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { useUserInfo } from "@/hooks/useUserInfo";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getBeaconExplorerValidatorUrl, shortenAddress } from "@/utils/misc";
+import { formatNumber } from "@/lib/utils";
 
 type ValidatorStatus = "active" | "inactive" | "slashed" | "exited" | "all";
 
@@ -41,7 +42,7 @@ const StatusSummary = ({
 }) => (
   <span className={`${color} flex items-center gap-1`}>
     <span>{icon}</span>
-    <span>{count}</span>
+    <span>{formatNumber(count)}</span>
   </span>
 );
 
