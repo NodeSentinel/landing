@@ -34,7 +34,7 @@ export default function HeroSection() {
             >
               <div className="flex flex-row items-center space-x-2">
                 <GnosisIcon width={16} height={16} />
-                <span>Gnosis (beta)</span>
+                <span>Gnosis Chain</span>
               </div>
             </Link>
           </Button>

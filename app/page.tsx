@@ -2,7 +2,7 @@ import HeroSection from "@/components/landing/HeroSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import StatsSection from "@/components/landing/StatsSection";
 import SupportUsSection from "@/components/landing/SupportUsSection";
-// import SupportedBySection from "@/components/landing/SupportedBySection";
+import SupportedBySection from "@/components/landing/SupportedBySection";
 // import PriceSimulator from "@/components/landing/PriceSimulator";
 import { PageContainer } from "@/components/ui/page-container";
 import SchemaOrg from "@/components/SchemaOrg";
@@ -13,13 +13,14 @@ export default function Home() {
       <SchemaOrg />
       <PageContainer>
         <HeroSection />
+        {/* <LiveDashboardSection /> */}
         <FeaturesSection />
         <StatsSection />
         {/* <BlockchainSection /> */}
         {/* <PricingSection /> */}
         {/* <PriceSimulator /> */}
         <SupportUsSection />
-        {/* <SupportedBySection /> */}
+        <SupportedBySection />
       </PageContainer>
     </>
   );
