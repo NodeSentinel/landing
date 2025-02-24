@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Send } from "lucide-react";
+import { Send, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -59,27 +59,15 @@ export default function Footer() {
               Connect With Us
             </h3>
             <div className="flex space-x-4">
-              {/* <Link
-                href="#"
-                className="text-gray-400 hover:text-cyan-400 transition duration-300"
-              >
-                <span className="sr-only">Twitter</span>
-                <Twitter className="w-6 h-6" />
-              </Link>
               <Link
-                href="#"
+                href="mailto:hello@node-sentinel.xyz"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-cyan-400 transition duration-300"
               >
-                <span className="sr-only">GitHub</span>
-                <Github className="w-6 h-6" />
+                <span className="sr-only">Email</span>
+                <Mail className="w-4 h-4" />
               </Link>
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-cyan-400 transition duration-300"
-              >
-                <span className="sr-only">LinkedIn</span>
-                <Linkedin className="w-6 h-6" />
-              </Link> */}
               <Link
                 href="https://t.me/+It8jmqe4k6s4ODAx"
                 target="_blank"
