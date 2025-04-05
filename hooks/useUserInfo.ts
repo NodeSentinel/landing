@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { UserInfo } from "@/apiTypes";
+import { UserValidatorsInfo } from "@/apiTypes";
 
 export function useUserInfo(chain: string, loginId: string) {
-  return useQuery<UserInfo>({
+  return useQuery<UserValidatorsInfo>({
     queryKey: ["user-info", chain, loginId],
     queryFn: async () => {
-      const res = await fetch(`/api/${chain}/user/${loginId}/info`);
+      const res = await fetch(`/api/${chain}/user/${loginId}/validatorsInfo`);
       if (!res.ok) {
         throw new Error("Failed to fetch user info");
       }
