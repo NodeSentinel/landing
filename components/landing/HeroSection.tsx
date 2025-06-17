@@ -39,11 +39,14 @@ export default function HeroSection() {
             </Link>
           </Button>
 
-          <Button className="px-8 py-6" disabled>
-            <Link href="#" target="_blank" rel="noopener noreferrer">
+          <Button className="px-8 py-6">
+            <Link
+              href="https://t.me/ethereum_nodeSentinel_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="flex flex-row items-center space-x-2">
                 <EthereumIcon width={16} height={16} />
-                <span>Ethereum (coming soon)</span>
               </div>
             </Link>
           </Button>
