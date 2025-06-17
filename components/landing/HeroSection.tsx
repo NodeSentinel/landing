@@ -28,6 +28,19 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
           <Button className="px-8 py-6">
             <Link
+              href="https://t.me/ethereum_nodeSentinel_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="flex flex-row items-center space-x-2">
+                <EthereumIcon width={16} height={16} />
+                <span>Ethereum</span>
+              </div>
+            </Link>
+          </Button>
+
+          <Button className="px-8 py-6">
+            <Link
               href="https://t.me/gbc_validators_bot"
               target="_blank"
               rel="noopener noreferrer"
@@ -35,18 +48,6 @@ export default function HeroSection() {
               <div className="flex flex-row items-center space-x-2">
                 <GnosisIcon width={16} height={16} />
                 <span>Gnosis Chain</span>
-              </div>
-            </Link>
-          </Button>
-
-          <Button className="px-8 py-6">
-            <Link
-              href="https://t.me/ethereum_nodeSentinel_bot"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="flex flex-row items-center space-x-2">
-                <EthereumIcon width={16} height={16} />
               </div>
             </Link>
           </Button>
