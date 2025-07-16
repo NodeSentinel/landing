@@ -15,6 +15,12 @@ export default function Header() {
           >
             Home
           </Link>
+          <Link
+            href="#faq"
+            className="text-muted-foreground hover:text-primary transition duration-300"
+          >
+            FAQ
+          </Link>
           {/* <Link href="/landing" className="text-gray-300 hover:text-cyan-400 transition duration-300">Landing</Link>
           <Link href="/gnosis/incident/abc123" className="text-gray-300 hover:text-cyan-400 transition duration-300">Sample Incident</Link>
           <Link href="#features" className="text-gray-300 hover:text-cyan-400 transition duration-300">Features</Link>

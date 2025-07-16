@@ -4,7 +4,10 @@ interface PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function PageContainer({ children, ...props }: PageContainerProps) {
   return (
-    <div className="container px-2 md:px-4 py-8 mt-[72px]" {...props}>
+    <div
+      className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30"
+      {...props}
+    >
       {children}
     </div>
   );
