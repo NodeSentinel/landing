@@ -61,7 +61,7 @@ export default function FeaturesSection() {
             {/* Enhanced background decoration */}
             <div className="absolute inset-0 bg-gradient-to-r from-primary/15 via-primary/10 to-primary/5 rounded-3xl -z-10 border border-primary/20 shadow-2xl"></div>
 
-            <div className="relative p-12">
+            <div className="relative p-4 lg:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-8">
                   <div className="space-y-6">
@@ -128,7 +128,7 @@ export default function FeaturesSection() {
             {/* Enhanced background decoration */}
             <div className="absolute inset-0 bg-gradient-to-l from-primary/15 via-primary/10 to-primary/5 rounded-3xl -z-10 border border-primary/20 shadow-2xl"></div>
 
-            <div className="relative p-12">
+            <div className="relative p-4 lg:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="flex justify-center lg:justify-start order-2 lg:order-1">
                   <TelegramChatInstance
@@ -196,7 +196,7 @@ export default function FeaturesSection() {
             {/* Enhanced background decoration */}
             <div className="absolute inset-0 bg-gradient-to-r from-primary/15 via-primary/10 to-primary/5 rounded-3xl -z-10 border border-primary/20 shadow-2xl"></div>
 
-            <div className="relative p-12">
+            <div className="relative p-4 lg:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-8">
                   <div className="space-y-6">
