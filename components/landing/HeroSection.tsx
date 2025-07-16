@@ -1,5 +1,4 @@
 import Link from "next/link";
-import NodeSentinelIcon from "@/components/icons/NodeSentinel";
 import { Button } from "@/components/ui/button";
 import { GnosisIcon } from "@/components/icons/Gnosis";
 import { EthereumIcon } from "@/components/icons/Ethereum";
@@ -26,10 +25,11 @@ export default function HeroSection() {
         <div className="mb-8 transform hover:scale-110 transition-transform duration-500 animate-float">
           <div className="relative">
             <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse-slow"></div>
-            <NodeSentinelIcon
+            <img
+              src="/images/logo_big.png"
+              alt="Node Sentinel"
               width={150}
               height={150}
-              viewBox="0 0 250 284"
               className="relative z-10"
             />
           </div>
@@ -42,7 +42,7 @@ export default function HeroSection() {
           </p>
           <p className="text-lg md:text-xl text-muted-foreground/80 italic">
             Keep your nodes running efficiently with real-time insights and
-            intelligent alerts.
+            instant alerts.
           </p>
         </div>
 
@@ -60,7 +60,7 @@ export default function HeroSection() {
             </Link>
           </Button>
 
-          <Button className="px-8 py-6 bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary/80 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover-lift">
+          <Button className="px-8 py-6 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover-lift">
             <Link
               href="https://t.me/gbc_validators_bot"
               target="_blank"
@@ -68,7 +68,7 @@ export default function HeroSection() {
               className="flex flex-row items-center space-x-3"
             >
               <GnosisIcon width={20} height={20} />
-              <span className="font-semibold">Gnosis Chain</span>
+              <span className="font-semibold">Gnosis</span>
             </Link>
           </Button>
         </div>

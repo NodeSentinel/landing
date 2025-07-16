@@ -1,7 +1,38 @@
-import StatsChat from "./StatsChat";
-import AlertChat from "./AlertChat";
+import TelegramChatInstance from "@/components/landing/TelegramChatInstance";
+// import TelegramChatCarousel from "./TelegramChatCarousel";
 
 export default function FeaturesSection() {
+  const gnosisMessage = [
+    {
+      id: "1",
+      isBot: true,
+      message:
+        "🟢 170 | 🟡 0 | 🚫 0 | 🔚 9\n\nLast 1h performance: 99.74%\nBal: 170.03 GNO $21645\nClaimable: 0.91 GNO $116\nExtra stats: web dashboard \n━━━━━━━━━━━━━━━━━\n     APY%   GNO    xDAI    Total\nd:  5.305     0.02    0.01    $3.063\nw:  8.892     0.28    0.08    $35.36\nm:  8.420     1.13    0.52    $157.3\n\nGNO: $127.30\nUpdated: 06/11 11:32am UTC",
+      timestamp: "12:05",
+    },
+  ];
+
+  // Alert messages for both chains
+  const alertMessages = [
+    {
+      id: "1",
+      isBot: true,
+      message: "⚠️ Some validators are not active!\n\n📊 Validators dashboard",
+      timestamp: "5:25 PM",
+      withButton: true,
+      buttonText: "ok",
+    },
+    {
+      id: "2",
+      isBot: true,
+      message:
+        "⚠️ Your validators performance has fallen below the threshold of 90%! \n\n📊 Validators dashboard",
+      timestamp: "5:25 PM",
+      withButton: true,
+      buttonText: "ok",
+    },
+  ];
+
   return (
     <section id="features" className="py-32 relative">
       {/* Section background with enhanced gradient */}
@@ -10,13 +41,6 @@ export default function FeaturesSection() {
       <div className="container mx-auto px-4 relative z-10">
         {/* Enhanced Section Header */}
         <div className="text-center mb-20">
-          {/* <div className="inline-flex items-center gap-2 mb-6">
-            <div className="w-8 h-1 bg-gradient-to-r from-primary to-primary/50 rounded-full"></div>
-            <span className="text-primary font-semibold uppercase tracking-wider text-sm">
-              Features
-            </span>
-            <div className="w-8 h-1 bg-gradient-to-r from-primary/50 to-primary rounded-full"></div>
-          </div> */}
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
             What we do
           </h2>
@@ -35,8 +59,6 @@ export default function FeaturesSection() {
           <div className="relative">
             {/* Enhanced background decoration */}
             <div className="absolute inset-0 bg-gradient-to-r from-primary/15 via-primary/10 to-primary/5 rounded-3xl -z-10 border border-primary/20 shadow-2xl"></div>
-            {/* <div className="absolute -top-4 -left-4 w-8 h-8 bg-primary/20 rounded-full blur-sm"></div>
-            <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-primary/15 rounded-full blur-sm"></div> */}
 
             <div className="relative p-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -72,13 +94,7 @@ export default function FeaturesSection() {
                     <div className="flex items-start gap-4">
                       <div className="w-3 h-3 bg-gradient-to-r from-primary to-primary/70 rounded-full mt-2 flex-shrink-0 shadow-sm"></div>
                       <p className="text-muted-foreground text-lg">
-                        Real-time performance tracking for all your validators
-                      </p>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-3 h-3 bg-gradient-to-r from-primary to-primary/70 rounded-full mt-2 flex-shrink-0 shadow-sm"></div>
-                      <p className="text-muted-foreground text-lg">
-                        Balance tracking and APY calculations
+                        Last 1-Hour performance tracking
                       </p>
                     </div>
                     <div className="flex items-start gap-4">
@@ -97,9 +113,10 @@ export default function FeaturesSection() {
                 </div>
 
                 <div className="flex justify-center lg:justify-end">
-                  <div className="transform hover:scale-105 transition-transform duration-500 shadow-2xl rounded-2xl overflow-hidden">
-                    <StatsChat />
-                  </div>
+                  <TelegramChatInstance
+                    chain="gnosis"
+                    messages={gnosisMessage}
+                  />
                 </div>
               </div>
             </div>
@@ -109,15 +126,14 @@ export default function FeaturesSection() {
           <div className="relative">
             {/* Enhanced background decoration */}
             <div className="absolute inset-0 bg-gradient-to-l from-primary/15 via-primary/10 to-primary/5 rounded-3xl -z-10 border border-primary/20 shadow-2xl"></div>
-            {/* <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/20 rounded-full blur-sm"></div>
-            <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-primary/15 rounded-full blur-sm"></div> */}
 
             <div className="relative p-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="flex justify-center lg:justify-start order-2 lg:order-1">
-                  <div className="transform hover:scale-105 transition-transform duration-500 shadow-2xl rounded-2xl overflow-hidden">
-                    <AlertChat />
-                  </div>
+                  <TelegramChatInstance
+                    chain="ethereum"
+                    messages={alertMessages}
+                  />
                 </div>
 
                 <div className="space-y-8 order-1 lg:order-2">
@@ -138,7 +154,7 @@ export default function FeaturesSection() {
                           />
                         </svg>
                       </div>
-                      <h3 className="text-4xl font-bold">Smart Alerting</h3>
+                      <h3 className="text-4xl font-bold">Alerting</h3>
                     </div>
                     <p className="text-xl text-muted-foreground leading-relaxed">
                       Stay informed with instant notifications for critical
@@ -150,7 +166,8 @@ export default function FeaturesSection() {
                     <div className="flex items-start gap-4">
                       <div className="w-3 h-3 bg-gradient-to-r from-primary to-primary/70 rounded-full mt-2 flex-shrink-0 shadow-sm"></div>
                       <p className="text-muted-foreground text-lg">
-                        Be notified when your validators are not performing well
+                        When your validators are not performing below a
+                        customizable threshold
                       </p>
                     </div>
                     <div className="flex items-start gap-4">
@@ -171,11 +188,6 @@ export default function FeaturesSection() {
               </div>
             </div>
           </div>
-
-          {/* Section separator */}
-          {/*  <div className="flex justify-center">
-            <div className="w-32 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent rounded-full"></div>
-          </div> */}
         </div>
       </div>
     </section>

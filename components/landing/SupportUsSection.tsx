@@ -52,36 +52,33 @@ export default function SupportUsSection() {
               </div>
 
               {/* Supported chains */}
-              <div className="mb-8">
-                <p className="text-muted-foreground mb-4 font-medium">
-                  Supported Networks:
-                </p>
+              <div className="">
                 <div className="flex justify-center space-x-4 mb-6">
-                  <div className="flex flex-col items-center space-y-2 p-3 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
+                  <div>
                     <EthereumIcon width={32} height={32} />
                     <span className="text-xs text-muted-foreground">
                       Ethereum
                     </span>
                   </div>
-                  <div className="flex flex-col items-center space-y-2 p-3 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
+                  <div>
                     <GnosisIcon width={32} height={32} />
                     <span className="text-xs text-muted-foreground">
                       Gnosis
                     </span>
                   </div>
-                  <div className="flex flex-col items-center space-y-2 p-3 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
+                  <div>
                     <OptimismIcon width={32} height={32} />
                     <span className="text-xs text-muted-foreground">
                       Optimism
                     </span>
                   </div>
-                  <div className="flex flex-col items-center space-y-2 p-3 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
+                  <div>
                     <ArbitrumIcon width={32} height={32} />
                     <span className="text-xs text-muted-foreground">
                       Arbitrum
                     </span>
                   </div>
-                  <div className="flex flex-col items-center space-y-2 p-3 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
+                  <div>
                     <BaseIcon width={32} height={32} />
                     <span className="text-xs text-muted-foreground">Base</span>
                   </div>
@@ -90,9 +87,6 @@ export default function SupportUsSection() {
 
               {/* Address section */}
               <div className="mb-8">
-                <p className="text-muted-foreground mb-4 font-medium">
-                  Donation Address:
-                </p>
                 <div className="bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-4 mb-4">
                   <span className="text-sm md:text-base font-mono text-primary break-all">
                     {address}
