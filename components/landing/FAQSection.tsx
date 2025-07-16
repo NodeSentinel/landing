@@ -32,7 +32,7 @@ export default function FAQSection() {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl border border-primary/20 shadow-2xl"></div>
 
             <div className="relative p-12">
-              <div className="space-y-8">
+              <div className="space-y-0">
                 <Collapsible title="What is Node Sentinel?">
                   <div className="mt-6 text-lg leading-relaxed text-muted-foreground">
                     Node Sentinel is a monitoring tool designed specifically for
@@ -45,41 +45,37 @@ export default function FAQSection() {
 
                 <Collapsible title="Which blockchains does Node Sentinel support?">
                   <div className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                    Node Sentinel currently supports multiple Ethereum Layer 2
-                    networks including Ethereum, Gnosis, Optimism, Arbitrum, and
-                    Base. We&apos;re continuously expanding our support to include
-                    more blockchain networks based on community demand.
+                    Node Sentinel currently supports Ethereum and Gnosis.
                   </div>
                 </Collapsible>
 
                 <Collapsible title="How do I get started with Node Sentinel?">
                   <div className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                    Getting started is simple! Just connect your wallet or
-                    validator address to our platform. We&apos;ll automatically
-                    detect your validators and start monitoring their
-                    performance. You can then customize your alert preferences
-                    and access detailed analytics through our intuitive
-                    dashboard.
-                  </div>
-                </Collapsible>
-
-                <Collapsible title="What types of alerts does Node Sentinel provide?">
-                  <div className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                    Node Sentinel provides comprehensive alerts for validator
-                    performance issues, offline status changes, missed
-                    attestations, and important beacon chain events. All alerts
-                    are delivered via Telegram for instant notification and can
-                    be customized based on your specific monitoring needs.
+                    Getting started is simple! Just Talk to one of our bots on
+                    Telegram, load your validator by validatorsId or withdrawal
+                    address, and you&apos;re good to go.
                   </div>
                 </Collapsible>
 
                 <Collapsible title="Is Node Sentinel free to use?">
                   <div className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                    Yes! Node Sentinel is completely free to use. We believe in
-                    making validator monitoring accessible to everyone in the
-                    blockchain community. Our goal is to help validators
-                    maintain optimal performance and maximize their rewards
-                    through reliable monitoring tools.
+                    Yes! Node Sentinel is free to use. But in the future, we
+                    will transition to a paid model to cover R&D and
+                    infrastructure costs.
+                  </div>
+                </Collapsible>
+
+                <Collapsible title="Can I configure the alerts?">
+                  <div className="mt-6 text-lg leading-relaxed text-muted-foreground">
+                    Yes! Alerts are fully configurable.
+                    <br />
+                    <br />
+                    <strong>Performance thresholds:</strong> Pick the minimum
+                    1-hour performance score that triggers a notification.
+                    <br />
+                    <br />
+                    <strong>Missed attestations:</strong> Set how many
+                    consecutive misses mark a validator “inactive.”
                   </div>
                 </Collapsible>
               </div>

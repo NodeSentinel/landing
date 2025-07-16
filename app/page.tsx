@@ -1,7 +1,7 @@
 import HeroSection from "@/components/landing/HeroSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import StatsSection from "@/components/landing/StatsSection";
-import TestimonialsSection from "@/components/landing/TestimonialsSection";
+// import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import FAQSection from "@/components/landing/FAQSection";
 import SupportUsSection from "@/components/landing/SupportUsSection";
 // import SupportedBySection from "@/components/landing/SupportedBySection";
@@ -39,12 +39,12 @@ export default function Home() {
         </div>
 
         {/* Testimonials Section with warm background */}
-        <div className="relative">
+        {/* <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-muted/30"></div>
           <div className="relative">
             <TestimonialsSection />
           </div>
-        </div>
+        </div> */}
 
         {/* FAQ Section with clean background */}
         <div className="relative">

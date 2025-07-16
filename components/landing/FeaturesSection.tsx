@@ -1,4 +1,5 @@
 import TelegramChatInstance from "@/components/landing/TelegramChatInstance";
+import Image from "next/image";
 // import TelegramChatCarousel from "./TelegramChatCarousel";
 
 export default function FeaturesSection() {
@@ -42,7 +43,7 @@ export default function FeaturesSection() {
         {/* Enhanced Section Header */}
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            What we do
+            Our Features
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             We&apos;ve simplified validator monitoring to its maximum by
@@ -158,7 +159,8 @@ export default function FeaturesSection() {
                     </div>
                     <p className="text-xl text-muted-foreground leading-relaxed">
                       Stay informed with instant notifications for critical
-                      validator issues and performance changes.
+                      validator issues and performance changes. Customize what
+                      alerts you get and how often.
                     </p>
                   </div>
 
@@ -183,6 +185,63 @@ export default function FeaturesSection() {
                         Notifications for important beacon chain events
                       </p>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Extended Web Dashboard Feature */}
+          <div className="relative">
+            {/* Enhanced background decoration */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/15 via-primary/10 to-primary/5 rounded-3xl -z-10 border border-primary/20 shadow-2xl"></div>
+
+            <div className="relative p-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="space-y-8">
+                  <div className="space-y-6">
+                    <div className="inline-flex items-center gap-4 text-primary">
+                      <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center border border-primary/30 shadow-lg">
+                        <svg
+                          className="w-8 h-8"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M8 5a2 2 0 012-2h4a2 2 0 012 2v2H8V5z"
+                          />
+                        </svg>
+                      </div>
+                      <h3 className="text-4xl font-bold">
+                        Extended Web Dashboard
+                      </h3>
+                    </div>
+                    <p className="text-xl text-muted-foreground leading-relaxed">
+                      Dive deeper than the Telegram UI with rich charts and
+                      analytics
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex justify-center lg:justify-end">
+                  <div className="relative transform hover:scale-105 transition-transform duration-300 shadow-2xl rounded-2xl overflow-hidden">
+                    <Image
+                      src="/images/ns-web-dashboard.png"
+                      alt="Node Sentinel Web Dashboard"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover"
+                    />
                   </div>
                 </div>
               </div>
