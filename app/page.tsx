@@ -8,6 +8,14 @@ import SupportUsSection from "@/components/landing/SupportUsSection";
 // import PriceSimulator from "@/components/landing/PriceSimulator";
 import { PageContainer } from "@/components/ui/page-container";
 import SchemaOrg from "@/components/SchemaOrg";
+import { 
+  SITE_NAME, 
+  SITE_URL, 
+  HOME_DESCRIPTION, 
+  HOME_KEYWORDS,
+  HOME_OG_DESCRIPTION,
+  HOME_TWITTER_DESCRIPTION
+} from "@/lib/constants";
 
 export default function Home() {
   return (
@@ -68,29 +76,47 @@ export default function Home() {
 
 export const metadata = {
   title: "Node Sentinel - Your Go-To Tool for Blockchain Validator Monitoring",
-  description:
-    "Node Sentinel is a monitoring tool for blockchain validators, designed for simplicity and practicality. It provides real-time customizable notifications and detailed performance stats, helping node operators track validator health and maximize rewards.",
-  keywords:
-    "Node Sentinel, Beacon Chain, beacon validators, Validator Monitoring, Ethereum, Gnosis, Blockchain, Validator Management",
+  description: HOME_DESCRIPTION,
+  keywords: HOME_KEYWORDS,
+  authors: [{ name: "Node Sentinel Team" }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  formatDetection: {
+    email: "hello@node-sentinel.xyz",
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: "Node Sentinel - Blockchain Validator Monitoring Platform",
-    description: "Monitor and optimize your blockchain validators with ease",
+    description: HOME_OG_DESCRIPTION,
     type: "website",
     locale: "en_US",
-    url: "https://node-sentinel.xyz",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Node Sentinel Dashboard",
+        alt: "Node Sentinel - Blockchain Validator Monitoring Dashboard",
+        type: "image/png",
       },
     ],
-    siteName: "Node Sentinel",
   },
-  telegram: {
-    channel: "t.me/node_sentinel",
-    bot: "@gbc_validators_bot",
+  twitter: {
+    card: "summary_large_image",
+    title: "Node Sentinel - Blockchain Validator Monitoring Platform",
+    description: HOME_TWITTER_DESCRIPTION,
+    images: ["/images/og-image.png"],
+    creator: "@node_sentinel",
+    site: "@node_sentinel",
+  },
+  alternates: {
+    canonical: SITE_URL,
+    languages: {
+      "en-US": SITE_URL,
+    },
   },
   robots: {
     index: true,
@@ -103,4 +129,6 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
+  category: "Technology",
+  classification: "Blockchain Infrastructure",
 };

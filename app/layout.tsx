@@ -24,9 +24,16 @@ const nicoMoji = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Node Sentinel",
-  description:
-    "Equipping blockchain validators with advanced monitoring solutions.",
+  metadataBase: new URL("https://node-sentinel.xyz"),
+  title: {
+    default: "Node Sentinel",
+    template: "%s | Node Sentinel",
+  },
+  description: "Realtime monitoring and alerts for blockchain validators.",
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
