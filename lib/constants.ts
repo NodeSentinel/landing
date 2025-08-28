@@ -21,6 +21,7 @@ const CORE_DESCRIPTIONS = {
   CHAINS: {
     ETHEREUM: "Ethereum",
     GNOSIS: "Gnosis Chain",
+    GNO: "GNO",
   },
 
   // Action verbs
@@ -80,7 +81,7 @@ export const ETHEREUM_OG_DESCRIPTION = buildDescription([
 
 export const GNOSIS_OG_DESCRIPTION = buildDescription([
   `${CORE_DESCRIPTIONS.FEATURES.MONITORING} and alerts for ${CORE_DESCRIPTIONS.CHAINS.GNOSIS} validators`,
-  `${CORE_DESCRIPTIONS.ACTIONS.TRACK} performance and ${CORE_DESCRIPTIONS.FEATURES.REWARDS} on ${CORE_DESCRIPTIONS.CHAINS.XDAI}`,
+  `${CORE_DESCRIPTIONS.ACTIONS.TRACK} performance and ${CORE_DESCRIPTIONS.FEATURES.REWARDS} on ${CORE_DESCRIPTIONS.CHAINS.GNOSIS}`,
 ]);
 
 export const FEATURES_OG_DESCRIPTION = buildDescription([
