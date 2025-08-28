@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 export default function EthereumMonitoringPage() {
   return (
     <PageContainer>
-      <div className="max-w-4xl mx-auto py-12">
+      <div className="max-w-4xl mx-auto py-12 pt-24">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-6">
             Ethereum Validator Monitoring
@@ -86,7 +86,9 @@ export default function EthereumMonitoringPage() {
             performing optimally.
           </p>
           <a
-            href="/ethereum/dashboard/new"
+            href="https://t.me/ethereum_nodeSentinel_bot"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
           >
             Start Monitoring

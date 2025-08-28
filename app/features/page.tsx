@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 export default function FeaturesPage() {
   return (
     <PageContainer>
-      <div className="max-w-6xl mx-auto py-12">
+      <div className="max-w-6xl mx-auto py-12 pt-24">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-6">
             Powerful Features for Validator Monitoring

@@ -49,7 +49,7 @@ export default function FeaturesSection() {
             We&apos;ve simplified validator monitoring to its maximum by
             integrating everything into a Telegram bot.
           </p>
-          <br/>
+          <br />
           <p className="text-lg md:text-xl text-muted-foreground/80 italic">
             Simple, powerful, and effective.
           </p>

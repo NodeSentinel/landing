@@ -1,12 +1,12 @@
 import { PageContainer } from "@/components/ui/page-container";
 import { Metadata } from "next";
-import { 
-  SITE_NAME, 
-  SITE_URL, 
+import {
+  SITE_NAME,
+  SITE_URL,
   GNOSIS_MONITORING_DESCRIPTION,
   GNOSIS_KEYWORDS,
   GNOSIS_OG_DESCRIPTION,
-  GNOSIS_TWITTER_DESCRIPTION
+  GNOSIS_TWITTER_DESCRIPTION,
 } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 export default function GnosisMonitoringPage() {
   return (
     <PageContainer>
-      <div className="max-w-4xl mx-auto py-12">
+      <div className="max-w-4xl mx-auto py-12 pt-24">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-6">
             Gnosis Chain Validator Monitoring
@@ -51,7 +51,7 @@ export default function GnosisMonitoringPage() {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Monitor your Gnosis Chain validators in real-time with comprehensive
             performance tracking, missed attestation alerts, and detailed
-            analytics to maximize your xDAI staking rewards.
+            analytics to maximize your GNO staking rewards.
           </p>
         </div>
 
@@ -59,7 +59,7 @@ export default function GnosisMonitoringPage() {
           <div className="space-y-6">
             <h2 className="text-2xl font-semibold">Gnosis Chain Features</h2>
             <ul className="space-y-3 text-muted-foreground">
-              <li>• xDAI staking optimization</li>
+              <li>• GNO staking optimization</li>
               <li>• Gnosis beacon chain monitoring</li>
               <li>• Real-time validator performance</li>
               <li>• Cross-chain compatibility</li>
@@ -86,7 +86,9 @@ export default function GnosisMonitoringPage() {
             performing optimally.
           </p>
           <a
-            href="/gnosis/dashboard/new"
+            href="https://t.me/gbc_validators_bot"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
           >
             Start Monitoring

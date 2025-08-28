@@ -8,13 +8,13 @@ import SupportUsSection from "@/components/landing/SupportUsSection";
 // import PriceSimulator from "@/components/landing/PriceSimulator";
 import { PageContainer } from "@/components/ui/page-container";
 import SchemaOrg from "@/components/SchemaOrg";
-import { 
-  SITE_NAME, 
-  SITE_URL, 
-  HOME_DESCRIPTION, 
+import {
+  SITE_NAME,
+  SITE_URL,
+  HOME_DESCRIPTION,
   HOME_KEYWORDS,
   HOME_OG_DESCRIPTION,
-  HOME_TWITTER_DESCRIPTION
+  HOME_TWITTER_DESCRIPTION,
 } from "@/lib/constants";
 
 export default function Home() {
