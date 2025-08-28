@@ -70,7 +70,7 @@ export const FAQ_DESCRIPTION = buildDescription([
 
 // Open Graph descriptions (shorter, optimized for social media)
 export const HOME_OG_DESCRIPTION = buildDescription([
-  `Monitor and optimize your blockchain validators with ease`,
+  `Monitor and optimize your blockchain validators directly from your Telegram`,
   `${CORE_DESCRIPTIONS.FEATURES.MONITORING}, ${CORE_DESCRIPTIONS.FEATURES.ALERTS}, and multi-chain support for ${CORE_DESCRIPTIONS.CHAINS.ETHEREUM} and ${CORE_DESCRIPTIONS.CHAINS.GNOSIS}`,
 ]);
 
@@ -95,7 +95,7 @@ export const FAQ_OG_DESCRIPTION = buildDescription([
 
 // Twitter descriptions (even shorter, optimized for Twitter)
 export const HOME_TWITTER_DESCRIPTION = buildDescription([
-  `Monitor and optimize your blockchain validators with ease`,
+  `Monitor and optimize your blockchain validators directly from your Telegram`,
   `${CORE_DESCRIPTIONS.FEATURES.MONITORING} and ${CORE_DESCRIPTIONS.FEATURES.ALERTS}`,
 ]);
 
