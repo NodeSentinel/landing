@@ -6,7 +6,7 @@ export const SITE_URL = "https://node-sentinel.xyz";
 const CORE_DESCRIPTIONS = {
   // Main product description
   PRODUCT:
-    "A tool that helps you keep your nodes running efficiently with real-time insights and alerts.",
+    "Keep your nodes running efficiently with real-time insights and alerts directly from your Telegram.",
 
   // Key features
   FEATURES: {
@@ -42,77 +42,77 @@ const buildDescription = (components: string[]): string => {
 // Main page descriptions (full length)
 export const SITE_DESCRIPTION = buildDescription([
   CORE_DESCRIPTIONS.PRODUCT,
-  `It provides ${CORE_DESCRIPTIONS.FEATURES.MONITORING}, ${CORE_DESCRIPTIONS.FEATURES.ALERTS}, and ${CORE_DESCRIPTIONS.FEATURES.PERFORMANCE}`,
-  `Helping node operators ${CORE_DESCRIPTIONS.FEATURES.HEALTH} and ${CORE_DESCRIPTIONS.FEATURES.REWARDS}`,
+  "It provides real-time monitoring, customizable notifications, and detailed performance stats",
+  "Helping node operators validator health tracking and maximize staking rewards",
 ]);
 
 export const HOME_DESCRIPTION = SITE_DESCRIPTION;
 
 export const ETHEREUM_MONITORING_DESCRIPTION = buildDescription([
-  `${CORE_DESCRIPTIONS.ACTIONS.MONITOR} your ${CORE_DESCRIPTIONS.CHAINS.ETHEREUM} validators in real-time with Node Sentinel`,
-  `${CORE_DESCRIPTIONS.ACTIONS.TRACK} performance, missed attestations, and ${CORE_DESCRIPTIONS.ACTIONS.RECEIVE} instant alerts for optimal validator health`,
+  "Monitor your Ethereum validators in real-time with Node Sentinel",
+  "Track performance, missed attestations, and Receive instant alerts for optimal validator health",
 ]);
 
 export const GNOSIS_MONITORING_DESCRIPTION = buildDescription([
-  `${CORE_DESCRIPTIONS.ACTIONS.MONITOR} your ${CORE_DESCRIPTIONS.CHAINS.GNOSIS} validators with Node Sentinel`,
-  `${CORE_DESCRIPTIONS.ACTIONS.TRACK} performance, missed attestations, and ${CORE_DESCRIPTIONS.ACTIONS.RECEIVE} instant alerts for optimal validator health on ${CORE_DESCRIPTIONS.CHAINS.GNOSIS}`,
+  "Monitor your Gnosis Chain validators with Node Sentinel",
+  "Track performance, missed attestations, and Receive instant alerts for optimal validator health on Gnosis Chain",
 ]);
 
 export const FEATURES_DESCRIPTION = buildDescription([
-  `${CORE_DESCRIPTIONS.ACTIONS.DISCOVER} Node Sentinel's powerful features for blockchain validator monitoring`,
-  `${CORE_DESCRIPTIONS.FEATURES.MONITORING}, ${CORE_DESCRIPTIONS.FEATURES.ALERTS}, multi-chain support, and advanced analytics`,
+  "Discover Node Sentinel's powerful features for blockchain validator monitoring",
+  "real-time monitoring, customizable notifications, multi-chain support, and advanced analytics",
 ]);
 
 export const FAQ_DESCRIPTION = buildDescription([
-  `${CORE_DESCRIPTIONS.ACTIONS.FIND} answers to common questions about Node Sentinel's blockchain validator monitoring platform`,
-  `Learn about features, setup, and best practices`,
+  "Find answers to common questions about Node Sentinel's blockchain validator monitoring platform",
+  "Learn about features, setup, and best practices",
 ]);
 
 // Open Graph descriptions (shorter, optimized for social media)
 export const HOME_OG_DESCRIPTION = buildDescription([
-  `Monitor and optimize your blockchain validators directly from your Telegram`,
-  `${CORE_DESCRIPTIONS.FEATURES.MONITORING}, ${CORE_DESCRIPTIONS.FEATURES.ALERTS}, and multi-chain support for ${CORE_DESCRIPTIONS.CHAINS.ETHEREUM} and ${CORE_DESCRIPTIONS.CHAINS.GNOSIS}`,
+  "Monitor and optimize your blockchain validators directly from your Telegram",
+  "real-time monitoring, customizable notifications, and multi-chain support for Ethereum and Gnosis Chain",
 ]);
 
 export const ETHEREUM_OG_DESCRIPTION = buildDescription([
-  `${CORE_DESCRIPTIONS.FEATURES.MONITORING} and alerts for ${CORE_DESCRIPTIONS.CHAINS.ETHEREUM} validators`,
-  `${CORE_DESCRIPTIONS.ACTIONS.TRACK} performance and ${CORE_DESCRIPTIONS.FEATURES.REWARDS}`,
+  "real-time monitoring and alerts for Ethereum validators",
+  "Track performance and maximize staking rewards",
 ]);
 
 export const GNOSIS_OG_DESCRIPTION = buildDescription([
-  `${CORE_DESCRIPTIONS.FEATURES.MONITORING} and alerts for ${CORE_DESCRIPTIONS.CHAINS.GNOSIS} validators`,
-  `${CORE_DESCRIPTIONS.ACTIONS.TRACK} performance and ${CORE_DESCRIPTIONS.FEATURES.REWARDS} on ${CORE_DESCRIPTIONS.CHAINS.GNOSIS}`,
+  "real-time monitoring and alerts for Gnosis Chain validators",
+  "Track performance and maximize staking rewards on Gnosis Chain",
 ]);
 
 export const FEATURES_OG_DESCRIPTION = buildDescription([
-  `Powerful features for blockchain validator monitoring`,
-  `${CORE_DESCRIPTIONS.FEATURES.MONITORING}, ${CORE_DESCRIPTIONS.FEATURES.ALERTS}, and multi-chain support`,
+  "Powerful features for blockchain validator monitoring",
+  "real-time monitoring, customizable notifications, and multi-chain support",
 ]);
 
 export const FAQ_OG_DESCRIPTION = buildDescription([
-  `Common questions and answers about Node Sentinel's blockchain validator monitoring platform`,
+  "Common questions and answers about Node Sentinel's blockchain validator monitoring platform",
 ]);
 
 // Twitter descriptions (even shorter, optimized for Twitter)
 export const HOME_TWITTER_DESCRIPTION = buildDescription([
-  `Monitor and optimize your blockchain validators directly from your Telegram`,
-  `${CORE_DESCRIPTIONS.FEATURES.MONITORING} and ${CORE_DESCRIPTIONS.FEATURES.ALERTS}`,
+  "Monitor and optimize your blockchain validators directly from your Telegram",
+  "real-time monitoring and customizable notifications",
 ]);
 
 export const ETHEREUM_TWITTER_DESCRIPTION = buildDescription([
-  `${CORE_DESCRIPTIONS.FEATURES.MONITORING} and alerts for ${CORE_DESCRIPTIONS.CHAINS.ETHEREUM} validators`,
+  "real-time monitoring and alerts for Ethereum validators",
 ]);
 
 export const GNOSIS_TWITTER_DESCRIPTION = buildDescription([
-  `${CORE_DESCRIPTIONS.FEATURES.MONITORING} and alerts for ${CORE_DESCRIPTIONS.CHAINS.GNOSIS} validators`,
+  "real-time monitoring and alerts for Gnosis Chain validators",
 ]);
 
 export const FEATURES_TWITTER_DESCRIPTION = buildDescription([
-  `Powerful features for blockchain validator monitoring`,
+  "Powerful features for blockchain validator monitoring",
 ]);
 
 export const FAQ_TWITTER_DESCRIPTION = buildDescription([
-  `Common questions about Node Sentinel`,
+  "Common questions about Node Sentinel",
 ]);
 
 // Keywords for different pages
