@@ -12,10 +12,10 @@ export default function AboutSection() {
           </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
             Running a validator is simple — staying profitable and reliable
-            isn't. NodeSentinel was built by node operators for node operators.
-            We combine strong blockchain expertise with clear, actionable
-            metrics for your validators. Join thousands already monitoring
-            millions in staked value.
+            isn&apos;t. NodeSentinel was built by node operators for node
+            operators. We combine strong blockchain expertise with clear,
+            actionable metrics for your validators. Join thousands already
+            monitoring millions in staked value.
           </p>
         </div>
 
