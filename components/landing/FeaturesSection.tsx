@@ -43,15 +43,15 @@ export default function FeaturesSection() {
         {/* Enhanced Section Header */}
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Our Features
+            Features
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            We&apos;ve simplified validator monitoring to its maximum by
-            integrating everything into a Telegram bot.
+            Real-time dashboard & analytics, instant alerts & notifications, and
+            rewards & performance tracking for Ethereum & Gnosis validators.
           </p>
           <br />
           <p className="text-lg md:text-xl text-muted-foreground/80 italic">
-            Simple, powerful, and effective.
+            Trusted by hundreds of validators.
           </p>
         </div>
 
@@ -83,12 +83,12 @@ export default function FeaturesSection() {
                         </svg>
                       </div>
                       <h3 className="text-4xl font-bold">
-                        Real-time Dashboard
+                        Real-time Dashboard & Analytics
                       </h3>
                     </div>
                     <p className="text-xl text-muted-foreground leading-relaxed">
-                      Get comprehensive insights into your validator performance
-                      with real-time tracking and detailed analytics.
+                      View validator uptime, missed attestations, reward history
+                      and APY trends in one place.
                     </p>
                   </div>
 
@@ -156,12 +156,13 @@ export default function FeaturesSection() {
                           />
                         </svg>
                       </div>
-                      <h3 className="text-4xl font-bold">Alerting</h3>
+                      <h3 className="text-4xl font-bold">
+                        Instant Alerts & Notifications
+                      </h3>
                     </div>
                     <p className="text-xl text-muted-foreground leading-relaxed">
-                      Stay informed with instant notifications for critical
-                      validator issues and performance changes. Customize what
-                      alerts you get and how often.
+                      Get notified via Telegram or web when validators go
+                      offline or performance falls below threshold.
                     </p>
                   </div>
 
@@ -238,7 +239,7 @@ export default function FeaturesSection() {
                   <div className="relative transform hover:scale-105 transition-transform duration-300 shadow-2xl rounded-2xl overflow-hidden">
                     <Image
                       src="/images/ns-web-dashboard.png"
-                      alt="Node Sentinel Web Dashboard"
+                      alt="NodeSentinel validator monitoring dashboard showing real-time performance metrics and staking rewards"
                       width={600}
                       height={400}
                       className="w-full h-auto object-cover"

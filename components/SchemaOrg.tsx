@@ -56,22 +56,30 @@ export default function SchemaOrg() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            name: SITE_NAME,
+            name: "NodeSentinel - Blockchain Validator Monitoring Platform",
             applicationCategory: "Blockchain Tool",
             operatingSystem: "Web",
+            description:
+              "Monitor your Ethereum and Gnosis validators with NodeSentinel. Get real-time performance tracking, alerts for downtime, and rewards analytics to maximise your staking income.",
             offers: {
               "@type": "Offer",
               price: "0",
               priceCurrency: "USD",
-              description: "Free tier available",
+              description: "Free",
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.8",
+              reviewCount: "60",
+              bestRating: "5",
+              worstRating: "1",
             },
             featureList: [
-              "Real-time validator monitoring",
-              "Missed attestation alerts",
-              "Multi-chain support",
-              "Performance analytics",
-              "Customizable notifications",
-              "Telegram integration",
+              "Dashboard",
+              "Alerts",
+              "Performance tracking",
+              "Ethereum",
+              "Gnosis Chain",
             ],
           }),
         }}

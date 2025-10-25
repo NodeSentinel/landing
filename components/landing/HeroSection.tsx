@@ -16,8 +16,10 @@ export default function HeroSection() {
       <div className="container mx-auto px-4 text-center flex flex-col items-center relative z-10">
         {/* Main heading with enhanced styling */}
         <div className="mb-8">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-primary font-nico-moji gradient-text">
-            Node Sentinel
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary font-nico-moji gradient-text">
+            NodeSentinel
+            <br />
+            Validator Monitoring
           </h1>
         </div>
 
@@ -27,7 +29,7 @@ export default function HeroSection() {
             <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse-slow"></div>
             <img
               src="/images/logo_big.png"
-              alt="Node Sentinel"
+              alt="NodeSentinel - Ethereum and Gnosis validator monitoring dashboard"
               width={150}
               height={150}
               className="relative z-10"
@@ -38,11 +40,11 @@ export default function HeroSection() {
         {/* Enhanced description */}
         <div className="space-y-4 mb-12 max-w-3xl mx-auto">
           <p className="text-xl md:text-2xl mb-4 text-muted-foreground font-medium">
-            Advanced monitoring for blockchain validators
+            Real-time monitoring tool for blockchain validators
           </p>
           <p className="text-lg md:text-xl text-muted-foreground/80 italic">
-            Keep your nodes running efficiently with real-time insights and
-            instant alerts.
+            Keep your Ethereum & Gnosis validators online, efficient and
+            profitable
           </p>
         </div>
 
@@ -56,7 +58,7 @@ export default function HeroSection() {
               className="flex flex-row items-center space-x-3"
             >
               <EthereumIcon width={20} height={20} />
-              <span className="font-semibold">Ethereum</span>
+              <span className="font-semibold">Start Monitoring Ethereum</span>
             </Link>
           </Button>
 
@@ -68,9 +70,17 @@ export default function HeroSection() {
               className="flex flex-row items-center space-x-3"
             >
               <GnosisIcon width={20} height={20} />
-              <span className="font-semibold">Gnosis</span>
+              <span className="font-semibold">Start Monitoring Gnosis</span>
             </Link>
           </Button>
+        </div>
+
+        {/* CTA Description */}
+        <div className="mt-8 text-center">
+          <p className="text-lg text-muted-foreground">
+            Get started for free — Connect your validators in less than 1
+            minute.
+          </p>
         </div>
 
         {/* Decorative elements */}

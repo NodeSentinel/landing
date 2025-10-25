@@ -1,5 +1,6 @@
 import HeroSection from "@/components/landing/HeroSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
+import AboutSection from "@/components/landing/AboutSection";
 import StatsSection from "@/components/landing/StatsSection";
 // import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import FAQSection from "@/components/landing/FAQSection";
@@ -35,6 +36,14 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-muted/20 to-background"></div>
           <div className="relative">
             <FeaturesSection />
+          </div>
+        </div>
+
+        {/* About Section with enhanced background */}
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-background to-primary/5"></div>
+          <div className="relative">
+            <AboutSection />
           </div>
         </div>
 
